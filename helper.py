@@ -74,6 +74,7 @@ def convert_to_tflite_int8(model, x_train, save_path):
           f.write(tflite_model)
 
      return get_model_size_kb(save_path)
+   
 def evaluate_tflite(tflite_path, x_test, y_test):
         try:
             interpreter = tf.lite.Interpreter(model_path=tflite_path)
