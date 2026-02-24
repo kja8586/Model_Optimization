@@ -1,6 +1,6 @@
 import tensorflow_model_optimization as tfmot
 
-def apply_clustering(model, n_clusters=8):
+def apply_clustering(model, n_clusters=8, lr=5e-5):
   
   clustering_params = {
       'number_of_clusters': n_clusters,
@@ -13,7 +13,7 @@ def apply_clustering(model, n_clusters=8):
       model, **clustering_params
   )
   clustered_model.compile(
-      optimizer=tf.keras.optimizers.Adam(learning_rate=0.00005),
+      optimizer=tf.keras.optimizers.Adam(learning_rate=lr),
       loss='categorical_crossentropy',
       metrics=['accuracy']
   )
