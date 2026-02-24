@@ -1,4 +1,4 @@
-def apply_unstructured_pruning(model, final_sparsity, steps, epochs, lr):
+def apply_unstructured_pruning(model, final_sparsity, steps, epochs, lr=1e-5):
   pruning_params = {
       'pruning_schedule': tfmot.sparsity.keras.PolynomialDecay(
           initial_sparsity=0.0,
