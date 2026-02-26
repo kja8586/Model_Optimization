@@ -1,18 +1,26 @@
-import os
+import io
 import gzip
-import shutil
-
-def get_model_size_kb(model_path):
-   """Get model size in KB"""
-   return os.path.getsize(model_path) / 1024
+import tempfile
+import tensorflow as tf
 
 
-def get_gzipped_size_kb(model_path):
-   """Get gzipped size (real compression)"""
-   temp_zip = model_path + '.gz'
-   with open(model_path, 'rb') as f_in:
-       with gzip.open(temp_zip, 'wb') as f_out:
-           shutil.copyfileobj(f_in, f_out)
-   size = os.path.getsize(temp_zip) / 1024
-   os.remove(temp_zip)
-   return size
+def _serialize_model_to_bytes(model):
+    with tempfile.NamedTemporaryFile(suffix=".keras") as tmp:
+        model.save(tmp.name)
+        tmp.seek(0)
+        return tmp.read()
+
+
+def get_model_size_kb(model):
+    model_bytes = _serialize_model_to_bytes(model)
+    return len(model_bytes) / 1024
+
+
+def get_gzipped_model_size_kb(model):
+    model_bytes = _serialize_model_to_bytes(model)
+
+    gz_buffer = io.BytesIO()
+    with gzip.GzipFile(fileobj=gz_buffer, mode="wb") as gz_file:
+        gz_file.write(model_bytes)
+
+    return gz_buffer.getbuffer().nbytes / 1024

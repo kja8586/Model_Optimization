@@ -1,3 +1,5 @@
+import numpy as np
+
 def get_sparsity(model):
    """Calculate model sparsity"""
    total = 0

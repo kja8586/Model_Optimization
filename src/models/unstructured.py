@@ -1,3 +1,6 @@
+import tensorflow as tf
+import tensorflow_model_optimization as tfmot
+
 def apply_unstructured_pruning(model, final_sparsity, steps, epochs, lr=1e-5):
   pruning_params = {
       'pruning_schedule': tfmot.sparsity.keras.PolynomialDecay(

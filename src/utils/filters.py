@@ -1,3 +1,5 @@
+import tensorflow as tf
+
 def count_filters(model):
    """Count total filters in conv layers"""
    total_filters = 0

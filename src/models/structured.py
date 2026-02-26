@@ -1,10 +1,12 @@
+import tensorflow as tf
+
 def create_pruned_model_structure(prune_ratio=0.6):
     """Create a smaller model structure with fewer filters"""
     # prune_ratio here is fraction of filters to remove
     f1 = max(1, int(64 * (1 - prune_ratio)))
     f2 = max(1, int(128 * (1 - prune_ratio)))
     # ensure at least 1 filter
-    strucctured_model = tf.keras.Sequential([
+    structured_model = tf.keras.Sequential([
         tf.keras.layers.Conv2D(f1, (3, 3), activation='relu', padding='same', input_shape=(28,28,1)),
         tf.keras.layers.MaxPooling2D((2, 2)),
 
