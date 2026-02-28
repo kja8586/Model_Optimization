@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-def create_large_model():
+def create_large_model(config):
   model = tf.keras.Sequential([
         # First block - 64 filters
         tf.keras.layers.Conv2D(64, (3, 3), activation='relu', padding='same', input_shape=(28,28,1)),
@@ -21,7 +21,7 @@ def create_large_model():
         tf.keras.layers.Dense(10, activation='softmax')
     ])
   model.compile(
-      optimizer=tf.keras.optimizers.Adam(learning_rate=5e-5),
+      optimizer=tf.keras.optimizers.deserialize(config["optimizer"]),
       loss='categorical_crossentropy',
       metrics=['accuracy']
   )

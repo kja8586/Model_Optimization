@@ -1,0 +1,14 @@
+base_epochs: 10
+structured_epochs: 15
+prune_ratio: 0.6
+unstructured_sparsity: 0.8
+clusters: 8
+qat_epochs: 10
+batch_size: 128
+
+optimizer:
+  class_name: Adam
+  config:
+    learning_rate: 0.00005
+    beta_1: 0.9
+    beta_2: 0.999

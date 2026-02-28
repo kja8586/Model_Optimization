@@ -1,7 +1,7 @@
 import tensorflow as tf
 import tensorflow_model_optimization as tfmot
 
-def apply_unstructured_pruning(model, final_sparsity, steps, epochs, lr=1e-5):
+def apply_unstructured_pruning(model, final_sparsity, steps, epochs, config):
   pruning_params = {
       'pruning_schedule': tfmot.sparsity.keras.PolynomialDecay(
           initial_sparsity=0.0,
@@ -15,7 +15,7 @@ def apply_unstructured_pruning(model, final_sparsity, steps, epochs, lr=1e-5):
       model, **pruning_params
   )
   unstructured_pruned.compile(
-      optimizer=tf.keras.optimizers.Adam(learning_rate=lr),
+      optimizer=tf.keras.optimizers.deserialize(config["optimizer"]),
       loss='categorical_crossentropy',
       metrics=['accuracy']
   )

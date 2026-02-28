@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-def create_pruned_model_structure(prune_ratio=0.6):
+def create_pruned_model_structure(prune_ratio, config):
     """Create a smaller model structure with fewer filters"""
     # prune_ratio here is fraction of filters to remove
     f1 = max(1, int(64 * (1 - prune_ratio)))
@@ -23,7 +23,7 @@ def create_pruned_model_structure(prune_ratio=0.6):
     ])
     
     structured_model.compile(
-      optimizer=tf.keras.optimizers.Adam(learning_rate=lr),
+      optimizer=tf.keras.optimizers.deserialize(config["optimizer"]),
       loss='categorical_crossentropy',
       metrics=['accuracy']
   )
