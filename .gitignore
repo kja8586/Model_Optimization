@@ -1,0 +1,90 @@
+# ==========================
+# Python
+# ==========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# ==========================
+# Jupyter Notebook
+# ==========================
+.ipynb_checkpoints/
+*.nbconvert.ipynb
+
+# ==========================
+# Virtual Environment
+# ==========================
+.env
+.conda/
+*.env
+
+# ==========================
+# IDE / Editor
+# ==========================
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# ==========================
+# Logs
+# ==========================
+logs/
+*.log
+wandb/
+mlruns/
+
+# ==========================
+# Deep Learning Artifacts
+# ==========================
+checkpoints/
+*.ckpt
+*.pth
+*.pt
+*.h5
+*.onnx
+*.pb
+saved_models/
+runs/
+outputs/
+
+# ==========================
+# Dataset Files
+# ==========================
+data/
+datasets/
+*.csv
+*.tsv
+*.json
+*.zip
+*.tar
+*.gz
+*.hdf5
+
+# ==========================
+# Caches
+# ==========================
+.cache/
+.pytest_cache/
+.mypy_cache/
+
+# ==========================
+# OS Files
+# ==========================
+Thumbs.db
+
+# ==========================
+# Build
+# ==========================
+build/
+dist/
+*.egg-info/
