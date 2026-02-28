@@ -1,0 +1,6 @@
+tensorflow==2.19.0
+tensorflow-model-optimization==0.8.0
+tf_keras==2.19.0
+pandas==2.2.2
+numpy==1.26.0
+PyYAML==6.0.2

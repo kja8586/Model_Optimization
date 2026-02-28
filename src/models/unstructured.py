@@ -7,7 +7,7 @@ def apply_unstructured_pruning(model, final_sparsity, steps, epochs, config):
           initial_sparsity=0.0,
           final_sparsity=final_sparsity,
           begin_step=0,
-          end_step=steps*epochs
+          end_step=steps*(epochs-2)
       )
   }
   
