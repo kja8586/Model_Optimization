@@ -62,7 +62,7 @@ def run_pipeline():
 
   # Step 3: Unstructured Pruning
   unstructured_model, unstructured_callbacks = apply_unstructured_pruning(structured_model, final_sparsity=config["unstructured_sparsity"], steps=len(x_train)//config["batch_size"], epochs=config["epochs"], config=config)
-  unstructured_hist = train(unstructured_model, x_train, y_train, epochs=config["epochs"], batch_size=config["batch_size"], callbacks=unstructured_callbacks)
+  unstructured_hist = train(unstructured_model, x_train, y_train, epochs=config["base_epochs"], batch_size=config["batch_size"], callbacks=unstructured_callbacks)
   unstructured_model = tfmot.sparsity.keras.strip_pruning(unstructured_model)
   unstructured_model.compile(
     optimizer=tf.keras.optimizers.deserialize(config["optimizer"]),
