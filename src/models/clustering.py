@@ -1,3 +1,4 @@
+import tensorflow as tf
 import tensorflow_model_optimization as tfmot
 
 def apply_clustering(model, n_clusters=8, lr=5e-5):
