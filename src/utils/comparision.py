@@ -122,7 +122,7 @@ def compare_strategies(base_metrics, structured_metrics, unstructured_metrics, c
     print("=" * 100)
     print(f"✓ Strategy 1: Large base model ({base_metrics['params']:,} params)")
     print(f"✓ Strategy 2: Structured pruning (removed {base_metrics['filters'] - structured_metrics['filters']} filters, {base_metrics['params'] - structured_metrics['params']:,} params)")
-    print(f"✓ Strategy 3: 80% unstructured pruning ({unstruct:.1f}% sparsity)")
+    print(f"✓ Strategy 3: 80% unstructured pruning ({unstructured_metrics['sparsity']*100:.1f}% sparsity)")
     print(f"✓ Strategy 4: 8 minimal clusters (only 8 unique values)")
     print(f"✓ Strategy 5: INT8 quantization (QAT followed by TFLite)")
 
