@@ -5,11 +5,15 @@ import tensorflow as tf
 
 
 def _serialize_model_to_bytes(model):
+    # ✅ If already serialized (TFLite model)
+    if isinstance(model, (bytes, bytearray)):
+        return model
+
+    # ✅ Otherwise assume it's a Keras model
     with tempfile.NamedTemporaryFile(suffix=".keras") as tmp:
         model.save(tmp.name)
         tmp.seek(0)
         return tmp.read()
-
 
 def get_model_size_kb(model):
     model_bytes = _serialize_model_to_bytes(model)
